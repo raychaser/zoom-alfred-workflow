@@ -121,7 +121,7 @@ fn extract_zoom_link(txt: String) -> Option<String> {
     }
 
     let n = RE.captures(txt.as_str()).iter().next().map(|c|
-        format!("zoommtg://{}/join?action=join&confno={}", c.get(2).unwrap().as_str(), c.get(3).unwrap().as_str())
+        format!("zoommtg://{}/join?action=join&confno={}", c.get(2).unwrap().as_str(), c.get(3).unwrap().as_str().replace("?", "&"))
     );
 
     // std::println!("---- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\
