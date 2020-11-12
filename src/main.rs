@@ -124,10 +124,10 @@ fn extract_zoom_link(txt: String) -> Option<String> {
         format!("zoommtg://{}/join?action=join&confno={}", c.get(2).unwrap().as_str(), c.get(3).unwrap().as_str())
     );
 
-    // std::println!("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\
-    //     Input....: {}\n\
-    //     Output...: {:?}\n\
-    //     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n", txt, n);
+    // std::println!("---- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\
+    //     ---- Input....: {}\n\
+    //     ---- Output...: {:?}\n\
+    //     ---- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n", txt, n);
 
     return n;
 }
