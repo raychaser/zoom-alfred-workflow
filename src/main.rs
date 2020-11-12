@@ -82,7 +82,6 @@ fn main() {
         },
     };
 
-
     alfred::json::write_items(io::stdout(), items.as_slice()).unwrap();
 }
 
@@ -118,12 +117,17 @@ fn new_client() -> Client {
 
 fn extract_zoom_link(txt: String) -> Option<String> {
     lazy_static! {
-        static ref RE: Regex = Regex::new(r"(https?://(.*?zoom\.us)/j/(\w*))").unwrap();
+        static ref RE: Regex = Regex::new(r"(https?://([^/]*?zoom\.us)/j/([a-zA-Z0-9_?=]*))").unwrap();
     }
 
     let n = RE.captures(txt.as_str()).iter().next().map(|c|
         format!("zoommtg://{}/join?action=join&confno={}", c.get(2).unwrap().as_str(), c.get(3).unwrap().as_str())
     );
+
+    // std::println!("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\
+    //     Input....: {}\n\
+    //     Output...: {:?}\n\
+    //     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n", txt, n);
 
     return n;
 }
